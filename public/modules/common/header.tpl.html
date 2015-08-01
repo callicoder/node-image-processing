@@ -2,7 +2,7 @@
           <div class="header-container">
               <div class="nav-wrapper">
                   <a class="page-title hide-on-med-and-down left">
-                    EV60 Admin
+                    Material Admin
                   </a>
                   <ul class="right">
                     <li><a href=""><i class="mdi-action-search"></i></a></li>
@@ -49,12 +49,17 @@
                          <li class="divider"></li>
                       </ul>
                     </li>
+                    <li>
+                        <a href="" data-activates="chat-nav" material-side-nav edge="right">
+                          <i class="mdi-communication-chat"></i>
+                        </a>
+                    </li>
                   </ul>
               </div>
           </div>
       </nav> 
       <div class="container">
-            <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only" material-side-nav>
+            <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only" material-side-nav edge="left">
               <i class="mdi-navigation-menu"></i>
             </a>
       </div>
@@ -72,10 +77,10 @@
             <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><span class="mdi-action-settings"></span>Store Setting</a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="color.html">Payment Gateway</a></li>
-                  <li><a href="grid.html">Notification</a></li>
-                  <li><a href="helpers.html">Terms And Condition</a></li>
-                  <li><a href="helpers.html">Default Settings</a></li>                      
+                  <li><a href="">Payment Gateway</a></li>
+                  <li><a ui-sref="home.settings.notifications">Notification</a></li>
+                  <li><a href="">Terms And Condition</a></li>
+                  <li><a href="">Default Settings</a></li>                      
                 </ul>
               </div>
             </li>
@@ -94,8 +99,8 @@
               <div class="collapsible-body">
                 <ul>
                   <li><a ui-sref=".product">All Products</a></li>
-                  <li><a href="grid.html">Create Product</a></li>
-                  <li><a href="helpers.html">Upload Products</a></li>
+                  <li><a href="">Create Product</a></li>
+                  <li><a href="">Upload Products</a></li>
                 </ul>
               </div>
             </li> 
@@ -117,3 +122,32 @@
         <li class="bold"><a ui-sref=".report"><span class="mdi-content-report blue-grey-text text-darken-1"></span>Reports</a></li> 
         <li class="bold"><a ui-sref=".design"><span class="mdi-av-album blue-text text-darken-1"></span>Store design</a></li>               
       </ul> 
+
+
+
+  <ul id="chat-nav" class="side-nav right" style="width:300px;" ng-controller="chatController">
+    <li class="chat-header row">
+        <img src="images/personalAssistant.png" class="circle responsive-img"> 
+        <span>Personal Assistant</span>
+    </li>
+    <li class="chat-body">
+        <div ng-repeat="message in messages track by $index">
+            {{message}}
+        </div>
+    </li>
+    <li class="chat-footer">
+      <form name="chat-form" id="chat-form" ng-submit="sendMessage()">
+        <div class="row">
+          <div class="input-field">
+            <input id="message" type="text" ng-model="message" autocomplete="off">
+            <label for="message">Message</label>
+          </div>
+          <div>
+            <button type="submit" class="teal-text waves-effect waves-light send-action">
+              <i class="mdi-content-send"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </li>
+  </ul> 

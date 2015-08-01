@@ -3,7 +3,8 @@ angular.module('materialApp')
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/orders');
-       
+    $urlRouterProvider.when('/settings', '/settings/default');
+
     $stateProvider
     .state('home', {
         abstract: true,
@@ -44,7 +45,8 @@ angular.module('materialApp')
     })
     .state('home.editCategory', {
         url: '/categories/edit',
-        templateUrl: 'modules/category/editCategory.tpl.html'
+        templateUrl: 'modules/category/editCategory.tpl.html',
+        controller: 'editCategoryController'
     })
     .state('home.categoryDetails', {
         url: '/categories/:categoryId',
@@ -67,6 +69,25 @@ angular.module('materialApp')
         url: '/reports',
         templateUrl: 'modules/report/report.tpl.html'
     })
+    .state('home.settings', {
+        abstract: true,
+        url: '/settings',
+        template: '<ui-view></ui-view>'
+    })
+    .state('home.settings.notifications', {
+        url: '/notifications',
+        templateUrl: 'modules/settings/notifications/notification.tpl.html'
+    })
+    .state('home.settings.default', {
+        url: '/default'
+    })
+    .state('home.settings.termsAndConditions', {
+        url: '/termsAndConditions'
+    })
+    .state('home.settings.paymentGateway', {
+        url: 'paymentGateway'
+    })
     
+        
     
 }]);

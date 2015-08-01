@@ -17,7 +17,7 @@
 						</div>
 					</div>
 					<div class="col s12 m6" style="margin-top:20px;">
-						<form>
+						<form ng-submit="editCategory()">
 							 <div class="input-field">
     							<select material-select ng-model="parentCategory">
       								<option value="" disabled selected>Choose your option</option>
@@ -30,7 +30,7 @@
     							<label>Parent Category</label>
   							</div>
 							<div class="input-field">
-          						<input id="category_name" type="text" class="validate">
+          						<input id="category_name" type="text" class="validate" ng-model="categoryName">
           						<label for="category_name">Name</label>
         					</div>
 							<div class="input-field">

@@ -197,6 +197,7 @@ ul.side-nav.fixed .collapsible-body li a {
 
 #sidenav-overlay {
 	z-index: 9;
+	opacity: 0 !Important;
 }
 
 
@@ -217,6 +218,51 @@ ul.side-nav.fixed .collapsible-body li a {
 .notification-item .detail span:last-child{
 	font-size: 13px;
 }
+
+#chat-nav {
+	top: 65px;
+}
+
+#chat-nav li:hover {
+	background-color: transparent;
+}
+
+#chat-nav .chat-footer {
+	position: absolute;
+	bottom: 115px;
+}
+
+#chat-nav .send-action {
+	position: absolute;
+	right: -10px;
+	bottom: 37px;
+	background: transparent;
+	border: none;
+}
+
+#chat-nav .send-action i {
+	font-size: 25px;	
+}
+
+
+#chat-nav .chat-header {
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+#chat-nav .chat-header img {
+	height: 56px;
+	width: 56px;
+	float: left;
+}
+
+#chat-nav .chat-header span {
+ 	margin-top: 16px;
+ 	float: left;
+ 	margin-left: 15px;
+ 	font-size:17px;
+}
+
 /*
 	Common
 */
@@ -515,3 +561,31 @@ th.active-sort-column:after {
 /*
 	Customer Detail
 */
+
+.customer-detail .collection {
+	border: none;
+}
+
+
+.collection .notification-item  {
+	color: rgba(0,0,0,0.87);
+	display: block;
+}
+
+.collection-item.avatar:hover {
+	background-color: #fafafa;
+}
+
+
+/*
+	Notifications
+*/
+
+.card.notification-card .card-action a {
+	color: #039be5;
+	text-transform: none;
+}
+
+.collection.notification-collection .collection-item.avatar p {
+	font-size: 14px;
+}

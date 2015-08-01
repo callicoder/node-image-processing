@@ -1,14 +1,19 @@
-{ 
-	"name": "extraMaterial", 
-	"version": "1.0.0", 
-	"description": "Material Design Template for EV60", 
-	"main": "server.js", 
-	"keywords": [ "Material", "EV60" ], 
-	"author": "EV60 Team", 
-	"license": "ISC", 
-	"dependencies": { 
-		"body-parser": "^1.13.2", 
-		"express": "^4.13.1", 
-		"morgan": "^1.6.1" 
-	} 
+{
+  "name": "extraMaterial",
+  "version": "1.0.0",
+  "description": "Material Design Template for EV60",
+  "main": "server.js",
+  "keywords": [
+    "Material",
+    "EV60"
+  ],
+  "author": "EV60 Team",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "mongoose": "^4.1.0",
+    "morgan": "^1.6.1",
+    "socket.io": "^1.3.6"
+  }
 }

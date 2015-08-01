@@ -1,7 +1,6 @@
 angular.module('materialApp')
 .controller('headerController', ['$scope', function($scope){
 
-
 }])
 .directive('materialNiceScroll', function(){
 	return {
@@ -21,7 +20,8 @@ angular.module('materialApp')
 		restrict: 'A',
 		link: function(scope, element, attrs) {
 			$(element).sideNav({
-        		menuWidth: 250
+        		menuWidth: 250,
+        		edge: attrs.edge
     		});
 		}
 	}
@@ -64,4 +64,37 @@ angular.module('materialApp')
     		});
 		}
 	}
-});
+}).directive('inputField', ["$compile", "$timeout", function ($compile, $timeout) {
+	return {
+        restrict: 'C',
+        link: function (scope, element,attrs) {
+            	$timeout(function () {
+                	Materialize.updateTextFields();
+
+                	element.find('textarea, input').each(function (index, countable) {
+                		countable = angular.element(countable);
+                    	if (!countable.siblings('span[class="character-counter"]').length) {
+                    		countable.characterCounter();
+                    	}
+                	});
+         		});
+        }
+    };
+ }]).directive("ngModel",["$timeout", function($timeout){
+	return {
+        restrict: 'A',
+        priority: -1, // lower priority than built-in ng-model so it runs first
+        link: function(scope, element, attr) {
+            	scope.$watch(attr.ngModel,function(value){
+                	$timeout(function () {
+                        if (value){
+                            element.trigger("change");
+                        } else if(element.attr('placeholder') === undefined) {
+                            if(!element.is(":focus"))
+                            element.trigger("blur");
+                        }
+                    });
+                });
+        }
+    };
+}]);

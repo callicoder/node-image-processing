@@ -3,4 +3,8 @@ angular.module('materialApp')
 		if($stateParams.categoryId) {
 			$scope.parentCategory = $stateParams.categoryId;
 		}
+
+		$scope.editCategory = function() {
+			console.log($scope.categoryName);
+		};
 }])
