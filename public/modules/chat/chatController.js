@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('materialApp')
 .controller('chatController', ['$scope', 'Socket', function($scope, Socket){
 	var socket = io();
@@ -16,5 +18,5 @@ angular.module('materialApp')
 
 	$scope.$on('$destroy', function() {
         Socket.removeListener('chatMessage');
-    })
-}])
+    });
+}]);

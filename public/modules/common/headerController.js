@@ -1,3 +1,4 @@
+'use strict';
 angular.module('materialApp')
 .controller('headerController', ['$scope', function($scope){
 

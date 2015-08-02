@@ -51,7 +51,7 @@ var StoreSchema = new Schema({
 	timezone: {
 		type: String
 	},
-	currency: currencySchema,
+	currency: [currencySchema],
 	addressBook: [AddressSchema],
 	email: {
 		type: String,

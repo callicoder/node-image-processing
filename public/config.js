@@ -1,11 +1,37 @@
+'use strict';
+
 angular.module('materialApp')
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $urlRouterProvider.otherwise('/orders');
+    $urlRouterProvider.otherwise('/login');
     $urlRouterProvider.when('/settings', '/settings/default');
 
     $stateProvider
+    .state('welcome', {
+        abstract: true,
+        templateUrl: 'modules/common/welcome.tpl.html',        
+    })
+    .state('welcome.branding', {
+        url: '/',
+        templateUrl: 'modules/common/branding.tpl.html',
+    })
+    .state('welcome.login', {
+        url: '/login',
+        templateUrl: 'modules/users/login.tpl.html',
+        controller: 'loginController',
+        data: {
+            contentClass: 'login-content'
+        }
+    })
+    .state('welcome.register', {
+        url: '/register',
+        templateUrl: 'modules/users/register.tpl.html',
+        controller: 'registerController',
+        data: {
+            contentClass: 'register-content'
+        }
+    })
     .state('home', {
         abstract: true,
         templateUrl: 'modules/home/home.tpl.html',
@@ -88,6 +114,13 @@ angular.module('materialApp')
         url: 'paymentGateway'
     })
     
-        
-    
+}]);
+
+
+angular.module('materialApp')
+.run(['$rootScope', function($rootScope) {
+
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+        $rootScope.contentClass = toState.data.contentClass;
+    });    
 }]);

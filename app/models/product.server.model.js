@@ -30,7 +30,7 @@ var ProductSchema = new Schema({
 	title: {
 		type: 'String',
 		default: '',
-		trim: true
+		trim: true,
 		required: 'Title can not be blank'
 	},
 	description: {

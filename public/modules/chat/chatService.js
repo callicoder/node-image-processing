@@ -1,3 +1,4 @@
+'use strict';
 angular.module('materialApp')
 .factory('Socket', ['$timeout', function($timeout){
 

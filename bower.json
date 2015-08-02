@@ -2,13 +2,13 @@
   "name": "extraMaterial",
   "version": "1.0.0",
   "authors": [
-    "EV60 team"
+    "callicoder",
+	"ambush"
   ],
-  "description": "Material Design template for EV60",
+  "description": "Material Design template",
   "main": "server.js",
   "keywords": [
-    "Material",
-    "EV60"
+    "Material"
   ],
   "license": "ISC",
   "ignore": [

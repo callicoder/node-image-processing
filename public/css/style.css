@@ -7,6 +7,11 @@ body {
     min-height: 100vh;
     flex-direction: column;
 }
+
+/*
+	Home Page
+*/
+
 #main {
     flex: 1 0 auto;
 }
@@ -50,6 +55,7 @@ body {
 	font-size: 16px;
 
 }
+
 /*
 	Header
 */
@@ -588,4 +594,104 @@ th.active-sort-column:after {
 
 .collection.notification-collection .collection-item.avatar p {
 	font-size: 14px;
+}
+
+
+/*
+	Login/Register
+*/
+
+.card.login-content, .card.register-content {
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 35px 55px 35px;
+	overflow: visible;
+}
+
+.card.login-content i.prefix, .card.register-content i.prefix  {
+	color: #555555;
+}
+
+body.login-content, body.register-content {
+	padding-top: 60px;
+}
+
+body.login-content:before, body.register-content:before {
+	height: 50%;
+  	width: 100%;
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	background: #00bcd4;
+  	content: "";
+  	z-index: 0;
+}
+
+.card.login-content .social-login, .card.register-content .social-register {
+	margin-top: 20px;
+}
+
+.card.login-content .social-login .btn, .card.register-content .social-register .btn {
+	padding-top: 8px;
+}
+
+.card.login-content .social-login .btn.facebook, .card.register-content .social-register .btn.facebook {
+	background-color: #2f4b93;
+}
+
+.card.login-content .social-login .btn.google-plus, .card.register-content .social-register .btn.google-plus {
+	background-color: #be4830;
+}
+
+.card.login-content .social-login .btn.twitter, .card.register-content .social-register .btn.twitter {
+	background-color: #55acee;
+}
+
+.card.login-content .social-login .btn.linkedin, .card.register-content .social-register .btn.linkedin {
+	background-color: #0077b5;
+}
+
+.login-navigation , .register-navigation {
+	text-align: center;
+}
+
+@media(max-width: 400px) {
+	.card.login-content, .card.register-content {
+		padding: 15px;
+	}
+
+	.card.login-content .social-login .btn, .card.register-content .social-register .btn {
+		padding: 0 1rem;
+		padding-top: 5px;
+		width: 60px;
+		height: 54px;
+	}
+}
+
+.or-separator {
+  	width: 28%;
+  	height: 1px;
+  	background-color: #b4b4b4;
+  	margin: auto;
+  	clear: both;
+  	width: 50%;
+  	margin-top: 60px;
+}
+
+.or-separator:before, 
+.or-separator:after {
+	display: table;
+  	line-height: 0;
+  	content: "";
+}
+
+.or-block {
+	margin: auto;
+  	width: 50px;
+  	margin-top: -7px;
+  	height: 16px;
+  	background-color: #fff;
+  	text-align: center;
+  	font-size: 12px;
 }

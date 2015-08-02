@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('materialApp')
 .controller('editCategoryController', ['$scope', '$stateParams', function($scope, $stateParams){
 		if($stateParams.categoryId) {
@@ -7,4 +9,4 @@ angular.module('materialApp')
 		$scope.editCategory = function() {
 			console.log($scope.categoryName);
 		};
-}])
+}]);

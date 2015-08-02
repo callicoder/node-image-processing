@@ -1,31 +1,45 @@
 'use strict';
 
+/**
+ * Module dependencies.
+ */
 var http = require('http'),
-	https = require('https'),
-	socketio = require('socketio'),
-	express = require('express'),
-	morgan = require('morgan'),
-	compression = require('compression'),
-	bodyParser = require('bodyParser'),
-	methodOverride = require('methodOverride'),
-	session = require('express-session'),
-	cookieParser = require('cookie-parser'),
-	helmet = require('helmet'),
-	flash = require('connect-flash'),
-	passport = require('passport'),
-	mongoStore = require('connect-mongo')({
-		session: session
-	}),
-	consolidate = require('consolidate')
-	config = require('./config'),
-	logger = require('./logger'),
-	path = require('path');
+    https = require('https'),
+    socketio = require('socket.io'),
+    express = require('express'),
+    morgan = require('morgan'),
+    logger = require('./logger'),
+    bodyParser = require('body-parser'),
+    session = require('express-session'),
+    compression = require('compression'),
+    methodOverride = require('method-override'),
+    cookieParser = require('cookie-parser'),
+    helmet = require('helmet'),
+    passport = require('passport'),
+    mongoStore = require('connect-mongo')({
+        session: session
+    }),
+    flash = require('connect-flash'),
+    config = require('./config'),
+    consolidate = require('consolidate'),
+    path = require('path');
 
 module.exports = function(db) {
-	var app = express();
-	var server = http.createServer(app);
-	var io = socketio.listen(server);
+    // Initialize express app
+    var app = express();
 
+    // Create a new HTTP server
+    var server = http.createServer(app);
+
+    // Create a new Socket.io server
+    var io = socketio.listen(server);
+
+    // Globbing model files
+    config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
+        require(path.resolve(modelPath));
+    });
+
+    // Setting application local variables
     app.locals.title = config.app.title;
     app.locals.description = config.app.description;
     app.locals.keywords = config.app.keywords;
@@ -33,73 +47,113 @@ module.exports = function(db) {
     app.locals.jsFiles = config.getJavaScriptAssets();
     app.locals.cssFiles = config.getCSSAssets();
 
+    // Passing the request url to environment locals
+    app.use(function(req, res, next) {
+        res.locals.url = req.protocol + '://' + req.headers.host + req.url;
+        next();
+    });
+
+    // Should be placed before express.static
+    app.use(compression({
+        // only compress files for the following content types
+        filter: function(req, res) {
+            return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
+        },
+        // zlib option for compression level
+        level: 3
+    }));
+
+    // Showing stack errors
+    app.set('showStackError', true);
+
+    // Set swig as the template engine
     app.engine('server.view.html', consolidate[config.templateEngine]);
+
+    // Set views path and view engine
     app.set('view engine', 'server.view.html');
     app.set('views', './app/views');
 
+    // Enable logger (morgan)
+    app.use(morgan(logger.getLogFormat(), logger.getLogOptions()));
 
-	if (process.env.NODE_ENV === 'development') {
-		app.use(morgan('dev'));
-		app.set('view cache', false);
-	} else if (process.env.NODE_ENV === 'production') {
-		app.use(compression({
-			filter: function(req, res) {
-            	return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
-        	},
-        	level: 3
-		}));
+    // Environment dependent middleware
+    if (process.env.NODE_ENV === 'development') {
+        // Disable views cache
+        app.set('view cache', false);
+    } else if (process.env.NODE_ENV === 'production') {
+        app.locals.cache = 'memory';
+    }
 
-		app.locals.cache = 'memory';
-	}
+    // Request body parsing middleware should be above methodOverride
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
+    app.use(bodyParser.json());
+    app.use(methodOverride());
 
-
-	app.set('showStackError', true);
-
-	app.use(bodyParser.urlencoded({
-		extended: true
-	}));
-
-	app.use(bodyParser.json());
-	app.use(methodOverride());
-
+    // Use helmet to secure Express headers
     app.use(helmet.xframe());
     app.use(helmet.xssFilter());
     app.use(helmet.nosniff());
     app.use(helmet.ienoopen());
     app.disable('x-powered-by');
 
+    // Setting the app router and static folder
     app.use(express.static(path.resolve('./public')));
 
+    // CookieParser should be above session
     app.use(cookieParser());
 
+    // Express MongoDB session storage
     app.use(session({
         saveUninitialized: true,
         resave: true,
         secret: config.sessionSecret,
         store: new mongoStore({
-            db: db.connection.db,
+            mongooseConnection: db,
             collection: config.sessionCollection
         }),
         cookie: config.sessionCookie,
         name: config.sessionName
     }));
 
+    // use passport session
     app.use(passport.initialize());
     app.use(passport.session());
 
+    // connect flash for flash messages
     app.use(flash());
 
-    config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
-        require(path.resolve(modelPath));
-    });
-
+    // Globbing routing files
     config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {
         require(path.resolve(routePath))(app);
     });
 
+    // Load the Socket.io configuration
     require('./socketio')(server, io, mongoStore);
 
+    // Assume 'not found' in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like, set properties, use instanceof etc.
+    app.use(function(err, req, res, next) {
+        // If the error object doesn't exists
+        if (!err) return next();
+
+        // Log it
+        console.error(err.stack);
+
+        // Error page
+        res.status(500).render('500', {
+            error: err.stack
+        });
+    });
+
+    // Assume 404 since no middleware responded
+    app.use(function(req, res) {
+        res.status(404).render('404', {
+            url: req.originalUrl,
+            error: 'Not Found'
+        });
+    });
+
+    // Return Express server instance
     return server;
-};	
-
-
+};
