@@ -16,7 +16,7 @@ var http = require('http'),
     cookieParser = require('cookie-parser'),
     helmet = require('helmet'),
     passport = require('passport'),
-    mongoStore = require('connect-mongo')({
+    MongoStore = require('connect-mongo')({
         session: session
     }),
     flash = require('connect-flash'),
@@ -104,15 +104,17 @@ module.exports = function(db) {
     // CookieParser should be above session
     app.use(cookieParser());
 
+    var mongoStore = new MongoStore({
+            mongooseConnection: db,
+            collection: config.sessionCollection
+    });
+
     // Express MongoDB session storage
     app.use(session({
         saveUninitialized: true,
         resave: true,
         secret: config.sessionSecret,
-        store: new mongoStore({
-            mongooseConnection: db,
-            collection: config.sessionCollection
-        }),
+        store: mongoStore,
         cookie: config.sessionCookie,
         name: config.sessionName
     }));
@@ -131,28 +133,6 @@ module.exports = function(db) {
 
     // Load the Socket.io configuration
     require('./socketio')(server, io, mongoStore);
-
-    // Assume 'not found' in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like, set properties, use instanceof etc.
-    app.use(function(err, req, res, next) {
-        // If the error object doesn't exists
-        if (!err) return next();
-
-        // Log it
-        console.error(err.stack);
-
-        // Error page
-        res.status(500).render('500', {
-            error: err.stack
-        });
-    });
-
-    // Assume 404 since no middleware responded
-    app.use(function(req, res) {
-        res.status(404).render('404', {
-            url: req.originalUrl,
-            error: 'Not Found'
-        });
-    });
 
     // Return Express server instance
     return server;

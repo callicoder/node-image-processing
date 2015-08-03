@@ -654,6 +654,7 @@ body.login-content:before, body.register-content:before {
 
 .login-navigation , .register-navigation {
 	text-align: center;
+	color: #445544;
 }
 
 @media(max-width: 400px) {

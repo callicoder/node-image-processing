@@ -1,8 +1,12 @@
 'use strict';
 angular.module('materialApp')
-.factory('Socket', ['$timeout', function($timeout){
+.factory('Socket', ['$timeout', 'security', '$state', function($timeout, security, $state){
 
-	this.socket = io();
+	if(security.currentUser) {
+		this.socket = io();
+	} else {
+		$state.go('/');
+	}
 
 	// Wrap the Socket.io 'on' method
     this.on = function(eventName, callback) {

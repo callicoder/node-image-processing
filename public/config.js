@@ -121,6 +121,10 @@ angular.module('materialApp')
 .run(['$rootScope', function($rootScope) {
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-        $rootScope.contentClass = toState.data.contentClass;
+        if(toState.data && toState.data.contentClass) {
+            $rootScope.contentClass = toState.data.contentClass;
+        } else {
+            $rootScope.contentClass = '';
+        }
     });    
 }]);

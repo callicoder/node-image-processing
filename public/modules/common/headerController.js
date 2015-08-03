@@ -8,13 +8,13 @@ angular.module('materialApp')
 		restrict: 'A',
 		link: function(scope, element, attrs) {
 			$(element).niceScroll({
-        		cursorcolor: "rgba(0, 0, 0, 0.4)",
-        		cursorwidth: "6px",
-        		cursorborder: "none",
-        		cursorborderradius: "0px"
+        		cursorcolor: 'rgba(0, 0, 0, 0.4)',
+        		cursorwidth: '6px',
+        		cursorborder: 'none',
+        		cursorborderradius: '0px'
     		});
 		}
-	}
+	};
 })
 .directive('materialSideNav', function(){
 	return {
@@ -25,14 +25,21 @@ angular.module('materialApp')
         		edge: attrs.edge
     		});
 		}
-	}
+	};
 }).directive('materialCollapsible', function(){
 	return {
 		restrict: 'A',
 		link: function(scope, element, attrs) {
 			$(element).collapsible();
 		}
-	}
+	};
+}).directive('materialSlider', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            $(element).slider();
+        }
+    };
 }).directive('materialFileInput', function(){
 	return {
 		restrict: 'A',
@@ -44,14 +51,14 @@ angular.module('materialApp')
         		path_input.trigger('change');
       		});
 		}
-	}
+	};
 }).directive('materialSelect', function(){
 	return {
 		restrict: 'A',
 		link: function(scope, element, attrs) {
 			element.material_select();
 		}
-	}
+	};
 }).directive('materialDropdown', function(){
 	return {
 		restrict: 'A',
@@ -64,8 +71,8 @@ angular.module('materialApp')
       			belowOrigin: true // Displays dropdown below the button
     		});
 		}
-	}
-}).directive('inputField', ["$compile", "$timeout", function ($compile, $timeout) {
+	};
+}).directive('inputField', ['$compile', '$timeout', function ($compile, $timeout) {
 	return {
         restrict: 'C',
         link: function (scope, element,attrs) {
@@ -81,7 +88,7 @@ angular.module('materialApp')
          		});
         }
     };
- }]).directive("ngModel",["$timeout", function($timeout){
+ }]).directive('ngModel',['$timeout', function($timeout){
 	return {
         restrict: 'A',
         priority: -1, // lower priority than built-in ng-model so it runs first
@@ -89,10 +96,10 @@ angular.module('materialApp')
             	scope.$watch(attr.ngModel,function(value){
                 	$timeout(function () {
                         if (value){
-                            element.trigger("change");
+                            element.trigger('change');
                         } else if(element.attr('placeholder') === undefined) {
-                            if(!element.is(":focus"))
-                            element.trigger("blur");
+                            if(!element.is(':focus'))
+                            element.trigger('blur');
                         }
                     });
                 });
