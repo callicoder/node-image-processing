@@ -8,7 +8,7 @@ var VariantSchema = new Schema({
 		type: Number
 	},
 	sku: {
-		type: 'String'
+		type: String
 	},
 	requiresShipping: {
 		type: Boolean,
@@ -25,16 +25,16 @@ var VariantSchema = new Schema({
 
 var ProductSchema = new Schema({
 	productCode: {
-		type: 'String'
+		type: String
 	},
 	title: {
-		type: 'String',
+		type: String,
 		default: '',
 		trim: true,
 		required: 'Title can not be blank'
 	},
 	description: {
-		type: 'String',
+		type: String,
 		default: '',
 		trim: true
 	},
@@ -42,10 +42,10 @@ var ProductSchema = new Schema({
 		type: Schema.ObjectId
 	},
 	productType: {
-		type: 'String'
+		type: String
 	},
 	vendor: {
-		type: 'String'
+		type: String
 	},
 	variants: [VariantSchema],
 	published: {

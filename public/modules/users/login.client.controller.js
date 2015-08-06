@@ -9,7 +9,7 @@ angular.module('materialApp')
 		.success(function(data){
 			console.log(data);
 			$state.go('home.activate');
-			 Materialize.toast('Welcome to EV60 ', 4000) 
+			 Materialize.toast('Welcome to EV60 ', 4000); 
 		}).error(function(err){
 			console.log(err);
 		});
