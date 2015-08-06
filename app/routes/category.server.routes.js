@@ -4,6 +4,6 @@ var passport = require('passport');
 
 module.exports = function(app) {
 	// Category Routes
-	var users = require('../../app/controllers/category.server.controller');
+	var Categories = require('../../app/controllers/category.server.controller');
 
 };

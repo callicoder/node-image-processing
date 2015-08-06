@@ -696,3 +696,23 @@ body.login-content:before, body.register-content:before {
   	text-align: center;
   	font-size: 12px;
 }
+
+
+/*
+	List Product
+*/
+
+.listProduct .card .card-image a {
+	display: block;
+	height: 200px;
+}
+
+.listProduct .card .card-title {
+	line-height: 15px;
+	font-size: 15px;
+}
+
+.listProduct .card .card-content {
+	padding: 10px 20px;
+	height: 110px;
+}
