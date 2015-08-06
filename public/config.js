@@ -10,15 +10,15 @@ angular.module('materialApp')
     $stateProvider
     .state('welcome', {
         abstract: true,
-        templateUrl: 'modules/common/welcome.tpl.html',        
+        templateUrl: 'modules/common/welcome.client.view.html',        
     })
     .state('welcome.branding', {
         url: '/',
-        templateUrl: 'modules/common/branding.tpl.html',
+        templateUrl: 'modules/common/branding.client.view.html',
     })
     .state('welcome.login', {
         url: '/login',
-        templateUrl: 'modules/users/login.tpl.html',
+        templateUrl: 'modules/users/login.client.view.html',
         controller: 'loginController',
         data: {
             contentClass: 'login-content'
@@ -26,7 +26,7 @@ angular.module('materialApp')
     })
     .state('welcome.register', {
         url: '/register',
-        templateUrl: 'modules/users/register.tpl.html',
+        templateUrl: 'modules/users/register.client.view.html',
         controller: 'registerController',
         data: {
             contentClass: 'register-content'
@@ -34,66 +34,66 @@ angular.module('materialApp')
     })
     .state('home', {
         abstract: true,
-        templateUrl: 'modules/home/home.tpl.html',
+        templateUrl: 'modules/home/home.client.view.html',
         controller: 'homeController'
     })
     .state('home.activate', {
         url: '/activate',
-        templateUrl: 'modules/activate/activate.tpl.html'
+        templateUrl: 'modules/activate/activate.client.view.html'
     })
     .state('home.dashboard', {
     	url: '/dashboard',
-        templateUrl: 'modules/dashboard/dashboard.tpl.html'
+        templateUrl: 'modules/dashboard/dashboard.client.view.html'
     })
     .state('home.order', {
         url: '/orders',
-        templateUrl: 'modules/order/order.tpl.html'
+        templateUrl: 'modules/order/order.client.view.html'
     })
     .state('home.orderDetail', {
         url: '/orders/:orderId',
-        templateUrl: 'modules/order/orderDetail.tpl.html'
+        templateUrl: 'modules/order/orderDetail.client.view.html'
     })
     .state('home.customer', {
         url: '/customers',
-        templateUrl: 'modules/customer/customer.tpl.html'
+        templateUrl: 'modules/customer/customer.client.view.html'
     })
     .state('home.customerDetail', {
         url: '/customers/:customerId',
-        templateUrl: 'modules/customer/customerDetail.tpl.html'
+        templateUrl: 'modules/customer/customerDetail.client.view.html'
     })    
     .state('home.category', {
         url: '/categories',
-        templateUrl: 'modules/category/category.tpl.html',
+        templateUrl: 'modules/category/category.client.view.html',
     })
     .state('home.createCategory', {
         url: '/categories/create',
-        templateUrl: 'modules/category/createCategory.tpl.html'
+        templateUrl: 'modules/category/createCategory.client.view.html'
     })
     .state('home.editCategory', {
         url: '/categories/edit',
-        templateUrl: 'modules/category/editCategory.tpl.html',
+        templateUrl: 'modules/category/editCategory.client.view.html',
         controller: 'editCategoryController'
     })
     .state('home.categoryDetails', {
         url: '/categories/:categoryId',
-        templateUrl: 'modules/category/categoryDetails.tpl.html',
+        templateUrl: 'modules/category/categoryDetails.client.view.html',
         controller: 'categoryController'
     })
     .state('home.product', {
         url: '/products',
-        templateUrl: 'modules/product/product.tpl.html'
+        templateUrl: 'modules/product/listProduct.client.view.html'
     })
     .state('home.attribute', {
         url: '/attributes',
-        templateUrl: 'modules/attribute/attribute.tpl.html'
+        templateUrl: 'modules/attribute/attribute.client.view.html'
     })
     .state('home.design', {
         url: '/design',
-        templateUrl: 'modules/design/design.tpl.html'
+        templateUrl: 'modules/design/design.client.view.html'
     })
     .state('home.report', {
         url: '/reports',
-        templateUrl: 'modules/report/report.tpl.html'
+        templateUrl: 'modules/report/report.client.view.html'
     })
     .state('home.settings', {
         abstract: true,
@@ -102,7 +102,7 @@ angular.module('materialApp')
     })
     .state('home.settings.notifications', {
         url: '/notifications',
-        templateUrl: 'modules/settings/notifications/notification.tpl.html'
+        templateUrl: 'modules/settings/notifications/notification.client.view.html'
     })
     .state('home.settings.default', {
         url: '/default'
