@@ -132,14 +132,14 @@
     </li>
     <li class="chat-body">
         <div ng-repeat="message in messages track by $index">
-            {{message}}
+            {{message.text}}
         </div>
     </li>
     <li class="chat-footer">
       <form name="chat-form" id="chat-form" ng-submit="sendMessage()">
         <div class="row">
           <div class="input-field">
-            <input id="message" type="text" ng-model="message" autocomplete="off">
+            <input id="message" type="text" ng-model="messageText" autocomplete="off">
             <label for="message">Message</label>
           </div>
           <div>
