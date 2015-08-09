@@ -7,7 +7,7 @@ angular.module('materialApp')
 		security.register($scope.user)
 		.success(function(data){
 			console.log(data);
-			$state.go('home.activate');
+			$state.go('store');
 		}).error(function(err){
 			console.log(err);
 		});

@@ -13,8 +13,6 @@ var _ = require('lodash'),
  * Signup
  */
 exports.signup = function(req, res) {
-
-	console.log(req.body);	
 	// Init Variables
 	var user = new User(req.body);
 	var message = null;
@@ -73,4 +71,15 @@ exports.signin = function(req, res, next) {
 exports.signout = function(req, res) {
 	req.logout();
 	res.redirect('/');
+};
+
+
+exports.requiresLogin = function(req, res, next) {
+    if (!req.isAuthenticated()) {
+        return res.status(401).send({
+            message: 'User is not logged in'
+        });
+    }
+
+    next();
 };

@@ -17,11 +17,22 @@ var CategorySchema = new Schema({
 		trim: true
 	},
 	parent: {
-		type: Schema.ObjectId
+		type: Schema.ObjectId,
+		ref: 'Category'
 	},
 	image: {
 		src: String 
-	}
+	},
+	storeId: {
+		type: Schema.ObjectId
+	},
+	createdAt: {
+		type: Date,
+		default: Date.now
+	},
+	updatedAt: {
+
+	},
 });
 
 mongoose.model('Category', CategorySchema);

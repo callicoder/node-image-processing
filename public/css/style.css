@@ -75,6 +75,7 @@ ul.side-nav.fixed li {
 ul.side-nav.fixed a { 
 	line-height: 44px; 
 	height: 44px; 
+	padding-right: 0px !Important;
 }
 
 ul.side-nav.fixed { 
@@ -267,6 +268,60 @@ ul.side-nav.fixed .collapsible-body li a {
  	float: left;
  	margin-left: 15px;
  	font-size:17px;
+}
+
+.profile-menu {
+	max-height: 0;
+	overflow: hidden;
+	-webkit-transition: max-height 0.3s;
+	-moz-transition: max-height 0.3s;
+	transition: max-height 0.3s;
+}
+
+.profile-menu.open {
+	max-height: 200px;
+	border-bottom: 1px solid #D0D1CB;
+}
+
+.profile-menu:hover {
+	background-color: #fff !Important;
+}
+
+.profile-toggle a {
+	height: 38px !Important;
+	line-height: 38px !Important;
+	background-color: rgba(0, 0, 0, 0.37);
+	margin-left: -30px;
+	margin-right: -30px;
+	padding-left: 32px !Important;
+}
+
+.profile-toggle a:after {
+	speak: none; 
+	display: inline-block; 
+	font-family: "Material-Design-Icons"; 
+	font-style: normal; 
+	font-weight: normal; 
+	font-variant: normal; 
+	text-rendering: auto; 
+	float: right;
+	content: "\e8a3";	
+	padding-right: 15px;
+	font-size: 25px;
+}
+
+.profile-toggle a.open:after {
+	speak: none; 
+	display: inline-block; 
+	font-family: "Material-Design-Icons"; 
+	font-style: normal; 
+	font-weight: normal; 
+	font-variant: normal; 
+	text-rendering: auto; 
+	float: right;
+	content: "\e8a4";	
+	padding-right: 15px;
+	font-size: 25px;
 }
 
 /*
@@ -715,4 +770,26 @@ body.login-content:before, body.register-content:before {
 .listProduct .card .card-content {
 	padding: 10px 20px;
 	height: 110px;
+}
+
+
+/*
+	Store
+*/
+
+.store-content {
+	max-width: 500px;
+	padding: 40px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+
+.input-field .prefix ~ select {
+	margin-left: 3rem;
+  	width: 92%;
+  	width: calc(100% - 3rem);
+}
+
+.store-content button[type=submit] {
+	margin-top: 20px;
 }

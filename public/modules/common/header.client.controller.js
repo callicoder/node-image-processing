@@ -3,6 +3,17 @@ angular.module('materialApp')
 .controller('headerController', ['$scope', function($scope){
 
 }])
+.directive('profileToggle', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            element.bind('click', function(e){
+                element.toggleClass('open');
+                $('.profile-menu').toggleClass('open');
+            });
+        }
+    };
+})
 .directive('materialNiceScroll', function(){
 	return {
 		restrict: 'A',

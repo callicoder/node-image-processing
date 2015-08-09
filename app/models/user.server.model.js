@@ -29,46 +29,6 @@ var AddressSchema = new Schema({
 	}
 });
 
-var currencySchema = new Schema({
-	currencyName: {
-		type: String
-	},
-	currencyCode: {
-		type: String
-	},
-	currencySymbol: {
-		type: String
-	}
-});
-
-var StoreSchema = new Schema({
-	storeName: {
-		type: String
-	},
-	description: {
-		type: String
-	},
-	timezone: {
-		type: String
-	},
-	currency: [currencySchema],
-	addressBook: [AddressSchema],
-	email: {
-		type: String,
-		trim: true,
-		default: '',
-		match: [/.+\@.+\..+/, 'Please fill a valid email address']
-	},
-	createdAt: {
-		type: Date,
-		default: Date.now
-	},
-	updatedAt: {
-		type: Date
-	}
-});
-
-
 /**
  * A Validation function for local strategy properties
  */
@@ -100,7 +60,10 @@ var UserSchema = new Schema({
 		trim: true
 	},
 	addressBook: [AddressSchema],
-	stores: [StoreSchema],
+	store: {
+		type: Schema.ObjectId,
+		ref: 'Store'
+	},
 	email: {
 		type: String,
 		trim: true,

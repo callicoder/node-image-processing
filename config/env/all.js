@@ -51,6 +51,7 @@ module.exports = {
 				'public/lib/angular/angular.min.js',
 				'public/lib/angular-animate/angular-animate.min.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
+				'public/lib/ng-file-upload/ng-file-upload.min.js',
 				'public/lib/materialize/dist/js/materialize.min.js'
 			]
 		},

@@ -32,6 +32,11 @@ angular.module('materialApp')
             contentClass: 'register-content'
         }
     })
+    .state('store', {
+        url: '/store',
+        templateUrl: 'modules/common/store.client.view.html',
+        controller: 'storeController'        
+    })
     .state('home', {
         abstract: true,
         templateUrl: 'modules/home/home.client.view.html',
@@ -64,13 +69,15 @@ angular.module('materialApp')
     .state('home.category', {
         url: '/categories',
         templateUrl: 'modules/category/category.client.view.html',
+        controller: 'categoryController'
     })
     .state('home.createCategory', {
         url: '/categories/create',
-        templateUrl: 'modules/category/createCategory.client.view.html'
+        templateUrl: 'modules/category/createCategory.client.view.html',
+        controller: 'createCategoryController'
     })
     .state('home.editCategory', {
-        url: '/categories/edit',
+        url: '/categories/edit/:categoryId',
         templateUrl: 'modules/category/editCategory.client.view.html',
         controller: 'editCategoryController'
     })

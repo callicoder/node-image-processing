@@ -2,5 +2,6 @@
 
 angular.module('materialApp', [
     'ui.router', 
-    'ngAnimate'
+    'ngAnimate',
+    'ngFileUpload'
 ]);

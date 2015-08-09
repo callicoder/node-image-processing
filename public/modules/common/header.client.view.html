@@ -67,9 +67,18 @@
         <li class="logo">
             <div id="logo-container">
               <img src="images/profile.jpg" alt="" class="circle responsive-img">
-              <div>callicoder@gmail.com</div> 
+              <div class="profile-toggle">
+                <a href="" profile-toggle class="white-text">callicoder@gmail.com</a>
+              </div> 
             </div>
         </li> 
+        <li class="profile-menu no-padding">
+            <ul>
+                <li><a ui-sref=".profile"><span class="mdi-social-person teal-text text-darken-2"></span>View Profile</a></li>
+                <li><a ui-sref=".changePassword"><span class="mdi-action-lock-open red-text text-darken-2"></span>Change Password</a></li>
+                <li><a href="/auth/signout"><span class="mdi-action-settings-power purple-text text-darken-2"></span>Logout</a></li>                
+            </ul>
+        </li>
         <li class="bold"><a ui-sref=".activate"><span class="mdi-action-store blue-text text-darken-2"></span>Activation Checklist</a></li>
         <li class="bold"><a ui-sref=".dashboard"><span class="mdi-action-dashboard teal-text text-darken-2"></span>Dashboard</a></li>
         <li class="no-padding">

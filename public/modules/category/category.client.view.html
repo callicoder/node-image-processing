@@ -8,18 +8,21 @@
 			</div>
 			<div class="content category-content">
 				<ul class="row">
-					<li class="col l3 m4 s6">
+					<li class="col l3 m4 s6" ng-repeat="category in categories">
 						<div class="card category-card">
 							<div class="card-image">
 								<a ui-sref="home.categoryDetails({categoryId:'Photography'})">
-									<img src="/images/photography.jpg" class="responsive-img">
+									<img ng-src="{{category.image.src}}" class="responsive-img">
 								</a>
 							</div>
 							<div class="card-content">
-								<a ui-sref="home.editCategory" class="btn-floating btn-small waves-effect waves-light teal lighten-2 edit-category">
+								<a ui-sref="home.editCategory({categoryId: category._id})" 
+									class="btn-floating btn-small waves-effect waves-light teal lighten-2 edit-category">
 									<i class="mdi-editor-mode-edit"></i>
 								</a>
-								<a class="card-title grey-text text-darken-4" ui-sref="home.categoryDetails({categoryId:'Photography'})">Photography</a>
+								<a class="card-title grey-text text-darken-4" ui-sref="home.categoryDetails({categoryId:'Photography'})">
+									{{category.name}}
+								</a>
 							</div>
 						</div>
 					</li>

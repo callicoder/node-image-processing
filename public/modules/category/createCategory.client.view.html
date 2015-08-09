@@ -9,35 +9,35 @@
 			</div>
 			<div class="content">
 				<div class="row">
-					<div class="col s12 m6 l5">
-						<img src="images/categoryPlaceholder.png" class="responsive-img">
-					</div>
-					<div class="col s12 m6" style="margin-top:20px;">
-						<form>
+					<form name="createCategoryForm" ng-submit="createCategory()">
+						<div class="col s12 m6 l5">
+							<div ngf-drop ng-model="file" class="drop-box" 
+  								ngf-drag-over-class="dragover" ngf-allow-dir="true"
+  								ngf-accept="'image/*'">
+								<img ngf-src="file" ngf-default-src="'images/categoryPlaceholder.png'" ngf-accept="'image/*'"
+								 class="responsive-img">
+  							</div>
+						</div>
+						<div class="col s12 m6" style="margin-top:20px;">
 							 <div class="input-field">
-    							<select material-select>
+    							<select material-select ng-model="category.parent">
       								<option value="" disabled selected>Choose your option</option>
-      								<option value="1">Photography</option>
-      								<option value="2">Computers</option>
-      								<option value="3">Mobiles</option>
-      								<option value="3">TV & Entertainment</option>  
-      								<option value="3">Camcorders</option>      								
-    							</select>
+      							</select>
     							<label>Parent Category</label>
   							</div>
 							<div class="input-field">
-          						<input id="category_name" type="text" class="validate">
+          						<input id="category_name" type="text" class="validate" ng-model="category.name">
           						<label for="category_name">Name</label>
         					</div>
 							<div class="input-field">
-          						<textarea id="textarea1" class="materialize-textarea"></textarea>
+          						<textarea id="textarea1" class="materialize-textarea" ng-model="category.description"></textarea>
          						<label for="textarea1">Description</label>
         					</div>
         					  <button class="btn waves-effect waves-light red" type="submit" name="action">Save &nbsp;
     								<i class="mdi-content-send" style="vertical-align:middle"></i>
   							  </button>
-						</form>
-					</div>					
+						</div>	
+					</form>				
 				</div>
 			</div>
 		</div>

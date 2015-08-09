@@ -5,7 +5,7 @@ angular.module('materialApp')
 	if(security.currentUser) {
 		this.socket = io();
 	} else {
-		$state.go('/');
+		$state.go('login');
 	}
 
 	// Wrap the Socket.io 'on' method

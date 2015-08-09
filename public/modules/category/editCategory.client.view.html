@@ -12,7 +12,7 @@
 					<div class="col s12 m6 l5">
 						<div class="card no-shadow save-category-card">
 							<div class="card-image">
-								<img src="images/photography.jpg" class="responsive-img">
+								<img ng-src="{{category.image.src}}" class="responsive-img">
 							</div>
 						</div>
 					</div>
@@ -30,11 +30,11 @@
     							<label>Parent Category</label>
   							</div>
 							<div class="input-field">
-          						<input id="category_name" type="text" class="validate" ng-model="categoryName">
+          						<input id="category_name" type="text" class="validate" ng-model="category.name">
           						<label for="category_name">Name</label>
         					</div>
 							<div class="input-field">
-          						<textarea id="textarea1" class="materialize-textarea"></textarea>
+          						<textarea id="textarea1" class="materialize-textarea" ng-model="category.description"></textarea>
          						<label for="textarea1">Description</label>
         					</div>
         					  <button class="btn waves-effect waves-light red" type="submit" name="action">Save &nbsp;
