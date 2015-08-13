@@ -22,7 +22,8 @@ var http = require('http'),
     flash = require('connect-flash'),
     config = require('./config'),
     consolidate = require('consolidate'),
-    path = require('path');
+    path = require('path'),
+    cloudinary = require('cloudinary');
 
 module.exports = function(db) {
     // Initialize express app
@@ -33,6 +34,9 @@ module.exports = function(db) {
 
     // Create a new Socket.io server
     var io = socketio.listen(server);
+
+    // configure cloudinary
+    cloudinary.config(config.cloudinaryParameters);    
 
     // Globbing model files
     config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {

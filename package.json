@@ -12,6 +12,7 @@
     "async": "^1.4.1",
     "body-parser": "^1.13.2",
     "chalk": "^1.1.0",
+    "cloudinary": "^1.2.4",
     "compression": "^1.5.2",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^0.8.2",

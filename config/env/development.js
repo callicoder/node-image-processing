@@ -20,6 +20,11 @@ module.exports = {
 	app: {
 		title: 'Material Admin - Development Environment'
 	},
+	cloudinaryParameters: {
+		cloud_name: 'callicoder',
+		api_key: '977414466731322',
+		api_secret: '9JPT9m3Xar0KvWlrzKMUIRFNM4M'
+	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || '1392612974398975',
 		clientSecret: process.env.FACEBOOK_SECRET || '378e3a32a3309bacf6a4b2328e2c31d8',

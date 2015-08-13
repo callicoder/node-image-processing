@@ -90,9 +90,18 @@ angular.module('materialApp')
         url: '/products',
         templateUrl: 'modules/product/listProduct.client.view.html'
     })
+    .state('home.createProduct', {
+        url: '/products/create',
+        templateUrl: 'modules/product/createProduct.client.view.html',
+        controller: 'createProductController'
+    })
     .state('home.attribute', {
         url: '/attributes',
         templateUrl: 'modules/attribute/attribute.client.view.html'
+    })
+    .state('home.files', {
+        url: '/files',
+        templateUrl: 'modules/files/files.client.view.html'
     })
     .state('home.design', {
         url: '/design',

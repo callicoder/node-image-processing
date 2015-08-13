@@ -51,6 +51,11 @@ body {
 	left: 0;
 }
 
+.input-field.col label {
+	left: 0.75rem;
+}
+
+
 .page-footer p {
 	font-size: 16px;
 
@@ -792,4 +797,26 @@ body.login-content:before, body.register-content:before {
 
 .store-content button[type=submit] {
 	margin-top: 20px;
+}
+
+
+
+/*
+	Create Product
+*/
+
+.product-detail {
+	padding-left: 15px;
+}
+
+
+
+/*
+	Files
+*/
+
+.files .drop-box {
+	height: 300px;
+	border: 2px dotted rgb(77, 182, 172); 
+	text-align: center;
 }
