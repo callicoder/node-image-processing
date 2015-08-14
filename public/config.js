@@ -101,7 +101,8 @@ angular.module('materialApp')
     })
     .state('home.files', {
         url: '/files',
-        templateUrl: 'modules/files/files.client.view.html'
+        templateUrl: 'modules/files/files.client.view.html',
+        controller: 'filesController'
     })
     .state('home.design', {
         url: '/design',

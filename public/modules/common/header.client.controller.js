@@ -51,7 +51,15 @@ angular.module('materialApp')
             $(element).slider();
         }
     };
-}).directive('materialFileInput', function(){
+}).directive('materialTabs', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            $(element).tabs();
+        }
+    };
+}).
+directive('materialFileInput', function(){
 	return {
 		restrict: 'A',
 		link: function(scope, element, attrs) {
