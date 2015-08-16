@@ -8,6 +8,9 @@ module.exports = {
 			pass: ''
 		}
 	},
+	rabbitUrl:'amqp://localhost',
+	IMAGE_PROCESSING_QUEUE: 'jobs.processImage',
+	IMAGE_RESIZE_QUEUE: 'jobs.resizeImage',
 	log: {
 		// Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
 		format: 'dev',
@@ -23,7 +26,7 @@ module.exports = {
 	cloudinaryParameters: {
 		cloud_name: 'callicoder',
 		api_key: '977414466731322',
-		api_secret: '9JPT9m3Xar0KvWlrzKMUIRFNM4M'
+		api_secret: 'I Have removed this.'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || '1392612974398975',

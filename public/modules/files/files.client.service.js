@@ -11,8 +11,20 @@ angular.module('materialApp')
 			return $http.get('/files/' + fileId);
 		},
 
-		uploadFile: function() {
+		uploadFile: function(file) {
+			console.log(file);
+			return Upload.upload({
+            	url: '/files',
+            	file: file
+        	});
+		},
 
+		resizeFiles: function(file) {
+			console.log(file);
+			return Upload.upload({
+				url: '/resizeFiles',
+				file: file
+			});
 		}
 	};
 

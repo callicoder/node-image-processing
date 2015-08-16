@@ -23,7 +23,8 @@
 		"ApplicationConfiguration": true,
 		"$": true,
 		"io": true,
-		"Materialize": true
+		"Materialize": true,
+		"unescape": true
 	},
 	"predef": [ // Extra globals.
 		"define",

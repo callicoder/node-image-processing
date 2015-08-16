@@ -5,7 +5,6 @@ var init = require('./config/init')(),
     mongoose = require('mongoose'),
     chalk = require('chalk');
 
-
 mongoose.connect(config.db.uri, config.db.options, function(err) {
     if (err) {
         console.error(chalk.red('Could not connect to MongoDB!'));
@@ -21,6 +20,9 @@ mongoose.connection.on('error', function(err) {
 
 // Init the express application
 var app = require('./config/express')(mongoose.connection);
+
+// Configure Worker Process
+require('./worker');
 
 // Bootstrap passport config
 require('./config/passport')();
