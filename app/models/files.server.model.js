@@ -25,6 +25,10 @@ var FileSchema = new Schema({
 	created_at: {
 		type: Date,
 		default: Date.now
+	},
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User'
 	}
 });
 

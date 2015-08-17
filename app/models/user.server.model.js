@@ -60,10 +60,6 @@ var UserSchema = new Schema({
 		trim: true
 	},
 	addressBook: [AddressSchema],
-	store: {
-		type: Schema.ObjectId,
-		ref: 'Store'
-	},
 	email: {
 		type: String,
 		trim: true,

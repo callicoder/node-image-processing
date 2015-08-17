@@ -26,7 +26,7 @@ module.exports = {
 	cloudinaryParameters: {
 		cloud_name: 'callicoder',
 		api_key: '977414466731322',
-		api_secret: 'I Have removed this.'
+		api_secret: '9JPT9m3Xar0KvWlrzKMUIRFNM4M'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || '1392612974398975',

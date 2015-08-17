@@ -5,7 +5,6 @@ angular.module('materialApp')
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/login');
-    $urlRouterProvider.when('/settings', '/settings/default');
 
     $stateProvider
     .state('welcome', {
@@ -32,72 +31,10 @@ angular.module('materialApp')
             contentClass: 'register-content'
         }
     })
-    .state('store', {
-        url: '/store',
-        templateUrl: 'modules/common/store.client.view.html',
-        controller: 'storeController'        
-    })
     .state('home', {
         abstract: true,
         templateUrl: 'modules/home/home.client.view.html',
         controller: 'homeController'
-    })
-    .state('home.activate', {
-        url: '/activate',
-        templateUrl: 'modules/activate/activate.client.view.html'
-    })
-    .state('home.dashboard', {
-    	url: '/dashboard',
-        templateUrl: 'modules/dashboard/dashboard.client.view.html'
-    })
-    .state('home.order', {
-        url: '/orders',
-        templateUrl: 'modules/order/order.client.view.html'
-    })
-    .state('home.orderDetail', {
-        url: '/orders/:orderId',
-        templateUrl: 'modules/order/orderDetail.client.view.html'
-    })
-    .state('home.customer', {
-        url: '/customers',
-        templateUrl: 'modules/customer/customer.client.view.html'
-    })
-    .state('home.customerDetail', {
-        url: '/customers/:customerId',
-        templateUrl: 'modules/customer/customerDetail.client.view.html'
-    })    
-    .state('home.category', {
-        url: '/categories',
-        templateUrl: 'modules/category/category.client.view.html',
-        controller: 'categoryController'
-    })
-    .state('home.createCategory', {
-        url: '/categories/create',
-        templateUrl: 'modules/category/createCategory.client.view.html',
-        controller: 'createCategoryController'
-    })
-    .state('home.editCategory', {
-        url: '/categories/edit/:categoryId',
-        templateUrl: 'modules/category/editCategory.client.view.html',
-        controller: 'editCategoryController'
-    })
-    .state('home.categoryDetails', {
-        url: '/categories/:categoryId',
-        templateUrl: 'modules/category/categoryDetails.client.view.html',
-        controller: 'categoryController'
-    })
-    .state('home.product', {
-        url: '/products',
-        templateUrl: 'modules/product/listProduct.client.view.html'
-    })
-    .state('home.createProduct', {
-        url: '/products/create',
-        templateUrl: 'modules/product/createProduct.client.view.html',
-        controller: 'createProductController'
-    })
-    .state('home.attribute', {
-        url: '/attributes',
-        templateUrl: 'modules/attribute/attribute.client.view.html'
     })
     .state('home.files', {
         url: '/files',
@@ -108,32 +45,6 @@ angular.module('materialApp')
         url: '/files/list',
         templateUrl: 'modules/files/listFiles.client.view.html',
         controller: 'listFilesController'
-    }) 
-    .state('home.design', {
-        url: '/design',
-        templateUrl: 'modules/design/design.client.view.html'
-    })
-    .state('home.report', {
-        url: '/reports',
-        templateUrl: 'modules/report/report.client.view.html'
-    })
-    .state('home.settings', {
-        abstract: true,
-        url: '/settings',
-        template: '<ui-view></ui-view>'
-    })
-    .state('home.settings.notifications', {
-        url: '/notifications',
-        templateUrl: 'modules/settings/notifications/notification.client.view.html'
-    })
-    .state('home.settings.default', {
-        url: '/default'
-    })
-    .state('home.settings.termsAndConditions', {
-        url: '/termsAndConditions'
-    })
-    .state('home.settings.paymentGateway', {
-        url: 'paymentGateway'
     })
     
 }]);

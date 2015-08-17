@@ -15,7 +15,7 @@ module.exports = function(app) {
 		.post(users.requiresLogin, upload.single('file'), files.uploadFile);	
 
 	app.route('/resizeFiles')
-		.post(upload.single('file'), files.resizeFiles);	
+		.post(users.requiresLogin, upload.single('file'), files.resizeFiles);	
 
 	app.route('/files/:fileId')
 		.get(files.getFile);	

@@ -7,9 +7,11 @@ angular.module('materialApp')
 		security.register($scope.user)
 		.success(function(data){
 			console.log(data);
-			$state.go('store');
+			Materialize.toast('Welcome to MtaerialAdmin ', 4000); 
+			$state.go('home.files');
 		}).error(function(err){
 			console.log(err);
+			Materialize.toast('There was some error while registering: ' + err.message, 4000); 
 		});
 	};
 

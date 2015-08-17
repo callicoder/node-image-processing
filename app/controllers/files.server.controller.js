@@ -13,7 +13,7 @@ var _ = require('lodash'),
 	cloudinary = require('cloudinary');   
 
 exports.listFiles = function(req, res) {
-	File.find({}, function(err, files){
+	File.find({user: req.user._id}, function(err, files){
 		if(err) {
 			return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -31,12 +31,15 @@ exports.getFile = function(req, res) {
 exports.uploadFile = function(req, res) {
 	if(req.file) {
 		var id = uuid.v1();
-		queue.publish(config.IMAGE_PROCESSING_QUEUE, {job_id: id, filePath: req.file.path, public_id: id});
+		queue.publish(config.IMAGE_PROCESSING_QUEUE, {job_id: id, filePath: req.file.path, public_id: id, user: req.user._id});
 
 		var file = new File({
 			public_id: id,
 			url: req.file.path
 		});
+		
+		file.user = req.user._id;
+
   		file.save(function(err){
   			if(err) {
   				return res.status(400).send({
@@ -56,7 +59,7 @@ exports.uploadFile = function(req, res) {
 exports.resizeFiles = function(req, res) {
 	if(req.file) {
 		var id = uuid.v1();	
-		queue.publish(config.IMAGE_RESIZE_QUEUE, {job_id: id, filePath: req.file.path, public_id: id});
+		queue.publish(config.IMAGE_RESIZE_QUEUE, {job_id: id, filePath: req.file.path, public_id: id, user: req.user._id});
 		res.send({message: 'Processing of images has started. We will notify once it is done.'});
 	} else {
 		res.status(400).send({

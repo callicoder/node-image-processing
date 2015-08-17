@@ -26,7 +26,9 @@ queue.on('connected', function(){
 			File.findOneAndUpdate({public_id: job.public_id}, result, function(err, file){
 				if(err) {
 					console.log('error while saving image: ' + err);
+					ack();
 				} else {	
+					console.log(file);
 					ack();
 				}
 			})
@@ -45,7 +47,8 @@ queue.on('connected', function(){
 		async.parallel([
 			function(callback) {
 				var writeStreamHorizontal = cloudinary.uploader.upload_stream(function(result) { 
-					var file = new File(result); 
+					var file = new File(result);
+					file.user = job.user; 
 					file.save(function(err){
 						if(err) {
 							callback(err);
@@ -63,7 +66,8 @@ queue.on('connected', function(){
 			function(callback) {
 
 				writeStreamVertical = cloudinary.uploader.upload_stream(function(result) { 
-					var file = new File(result); 
+					var file = new File(result);
+					file.user = job.user; 
 					file.save(function(err){
 						if(err) {
 							return callback(err);
@@ -83,6 +87,7 @@ queue.on('connected', function(){
 
 				writeStreamHorizontalSmall = cloudinary.uploader.upload_stream(function(result) { 
 					var file = new File(result); 
+					file.user = job.user;
 					file.save(function(err){
 						if(err) {
 							return callback(err);
@@ -101,6 +106,7 @@ queue.on('connected', function(){
 			function(callback) {
 				writeStreamGallery = cloudinary.uploader.upload_stream(function(result) { 
 					var file = new File(result); 
+					file.user = job.user;
 					file.save(function(err){
 						if(err) {
 							return callback(err);		
